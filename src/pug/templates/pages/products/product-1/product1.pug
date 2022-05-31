@@ -1,7 +1,11 @@
+include ../abstraction/variable.pug
+
 doctype html
 html(lang="en")
-    block head
-    
+
+    head
+        include ../partials/head/head
+        title #{pageTitles.titleProduct1}
     body 
         include ../../../../layout/header
         block content

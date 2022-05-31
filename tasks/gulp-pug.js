@@ -11,8 +11,6 @@ module.exports = function (options) {
     return gulp.src(`./${options.templates}/**/*.pug`)
     .pipe(
       pug({
-        doctype: 'html',
-        pretty : true,
       })
     )
     .pipe(plumber({ errorHandler: notify.onError("<%= error.message %>") }))
