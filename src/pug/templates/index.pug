@@ -3,6 +3,7 @@ extends main.pug
 block head 
     include ../partials/head/head
 block title
-    title #{pageTitles.title[0]}
+    - const titles =  ["Hello", "HelloProduct"];
+        title= titles[1]
 block content 
     include ../sections/main-section/main-section
