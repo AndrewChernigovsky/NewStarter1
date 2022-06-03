@@ -1,9 +1,13 @@
 extends main.pug
 
+block variables
+    include ../abstraction/variables
 block head 
     include ../partials/head/head
+
 block title
-    - const titles =  ["Hello", "HelloProduct"];
-        title= titles[1]
+    for text in titles1
+        title= titles1.page1
+
 block content 
     include ../sections/main-section/main-section
