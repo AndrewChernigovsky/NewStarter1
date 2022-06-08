@@ -6,8 +6,13 @@ block head
     include ../partials/head/head
 
 block title
-    for text in titles1
-        title= titles1.page1
+    each text in titles
+        title= text.page1
 
 block content 
     include ../sections/main-section/main-section
+    
+    each el in pov
+        if el[2]
+            li(class=liClass2)
+        li(class=liClass)=el
