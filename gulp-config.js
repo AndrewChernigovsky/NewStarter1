@@ -2,11 +2,10 @@ module.exports = {
   folder: {
     tasks: 'tasks',
     src: 'src',
-    build: 'assets',
-    prod: 'production',
+    build: 'production'
   },
   file: {
-    mainHtml: 'index.html',
+    mainHtml: 'production/index.html',
     mainJs: 'app.js',
     vendorJs: 'vendor.js',
     vendorJsMin: 'vendor.min.js',
@@ -17,7 +16,7 @@ module.exports = {
   },
   fileIncludepug: {
     templates: 'src/pug/templates',
-    dest: './',
+    dest: 'production',
   },
   task: {
     fileIncludepug: 'gulp-pug',
@@ -31,10 +30,7 @@ module.exports = {
     imageWebP: 'image-webp',
     svgSprite: 'svg-sprite',
     cleanProd: 'clean-production',
-    cleanBuild: 'clean-build',
-    copyFolders: 'copy-folders',
     copyFoldersProduction: 'copy-folders-production',
-    fileInclude: 'file-include',
     browserSync: 'browser-sync-server',
     watch: 'watch',
   },
@@ -55,7 +51,6 @@ module.exports = {
       '!.*/**',
       '.htaccess',
       `!${this.folder.prod}`,
-      `!${this.folder.build}/images/info.txt`,
       `!{${this.folder.src},${this.folder.src}/**}`,
       '!{tasks,tasks/**}',
       '!{node_modules,node_modules/**}',
@@ -68,10 +63,7 @@ module.exports = {
       '!README.md',
       '!readme.txt',
       '!{sys_icon,sys_icon/**}',
-    ];
-  },
-  getPathesToCopy: function () {
-    return [
+
       `./${this.folder.src}/**`,
       `!{${this.folder.src}/icon-svg,${this.folder.src}/icon-svg/**}`,
       `!{${this.folder.src}/images,${this.folder.src}/images/**}`,
@@ -80,5 +72,5 @@ module.exports = {
       `!{${this.folder.src}/scss,${this.folder.src}/scss/**}`,
       `!{${this.folder.src}/vendor_entries,${this.folder.src}/vendor_entries/**}`,
     ];
-  },
+  }
 };

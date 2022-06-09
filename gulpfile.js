@@ -173,25 +173,10 @@
   });
 
   /**
-   * Clean build folder
-   */
-  requireTask(`${cfg.task.cleanBuild}`, `./${cfg.folder.tasks}/`, {
-    src: cfg.folder.build,
-  });
-
-  /**
    * Clean production folder
    */
   requireTask(`${cfg.task.cleanProd}`, `./${cfg.folder.tasks}/`, {
     src: cfg.folder.prod,
-  });
-
-  /**
-   * Copy folders to the build folder
-   */
-  requireTask(`${cfg.task.copyFolders}`, `./${cfg.folder.tasks}/`, {
-    dest: cfg.folder.build,
-    foldersToCopy: cfg.getPathesToCopy(),
   });
 
   /**
@@ -232,7 +217,7 @@
         imageMin: cfg.task.imageMin,
         imageWebP: cfg.task.imageWebP,
         svgSprite: cfg.task.svgSprite,
-        copyFolders: cfg.task.copyFolders,
+        copyFolders: cfg.task.copyFoldersProduction,
       },
     },
     false
@@ -251,9 +236,7 @@
         gulp.series(cfg.task.buildSass, cfg.task.buildSassCustom, cfg.task.buildStylesVendors),
         gulp.series(cfg.task.buildCustomJs, cfg.task.buildJsVendors)
       ),
-      gulp.series(cfg.task.imageMin, cfg.task.imageWebP),
-      cfg.task.svgSprite,
-      cfg.task.copyFolders,
+      cfg.task.copyFoldersProduction,
       gulp.parallel(cfg.task.browserSync, cfg.task.watch)
     )
   );
@@ -264,7 +247,7 @@
   gulp.task(
     'build',
     gulp.series(
-      gulp.parallel(cfg.task.cleanProd, cfg.task.cleanBuild),
+      gulp.parallel(cfg.task.cleanProd),
       cfg.task.esLint,
       gulp.parallel(
         gulp.series(cfg.task.fileIncludepug),
@@ -273,7 +256,22 @@
       ),
       gulp.series(cfg.task.imageMin, cfg.task.imageWebP),
       cfg.task.svgSprite,
-      cfg.task.copyFolders,
+      cfg.task.copyFoldersProduction
+    ),
+    true
+  );
+  gulp.task(
+    'sprite',
+    gulp.series(
+      gulp.series(cfg.task.svgSprite,),
+      cfg.task.copyFoldersProduction
+    ),
+    true
+  );
+  gulp.task(
+    'webp',
+    gulp.series(
+      gulp.series(cfg.task.imageMin, cfg.task.imageWebP),
       cfg.task.copyFoldersProduction
     ),
     true

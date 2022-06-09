@@ -31,7 +31,6 @@
     "gulp-eslint": "^6.0.0",
     "gulp-file-include": "^2.1.1",
     "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-htmlhint": "^3.0.0",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^6.2.0",
     "gulp-newer": "^1.4.0",
@@ -45,7 +44,6 @@
     "gulp-svg-sprite": "^1.5.0",
     "gulp-svgmin": "^4.1.0",
     "gulp-uglify": "^3.0.2",
-    "htmlhint-stylish": "^1.0.3",
     "imagemin-webp": "^6.0.0",
     "path": "^0.12.7",
     "vinyl-source-stream": "^2.0.0"
@@ -56,7 +54,9 @@
   "scripts": {
     "test": "gulp build",
     "production": "gulp build",
-    "start": "gulp"
+    "start": "gulp",
+    "imagemin-Webp": "gulp webp",
+    "sprite": "gulp sprite"
   },
   "dependencies": {
     "choices.js": "^9.0.1",

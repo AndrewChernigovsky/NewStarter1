@@ -33,18 +33,12 @@ module.exports = function (options) {
           svgSprite({
             mode: {
               symbol: {
-                sprite: '../sprite.html',
-                render: {
-                  scss: {
-                    dest: '../../../scss/base/sprite.scss',
-                    template: `./${options.src}/scss/abstracts/sprite-template.scss`,
-                  },
-                },
+                sprite: '../sprite.svg',
               },
             },
           })
         )
-        .pipe(gulp.dest(`./${options.src}/html/partials`))
+        .pipe(gulp.dest(`./${options.src}/images/sprite`))
     );
   };
 };
